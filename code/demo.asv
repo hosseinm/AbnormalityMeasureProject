@@ -8,7 +8,8 @@ ImageName=imread(options.Image); % read a image of dataset); % read a image of d
 [ options ] = Function_cellsize(options);%%% S [2x3,4x6,... ]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 data=Mnu_Tracklet1;
-
+options.trkcount=2;%%% nember of frame(tracklet length)
+options.bincount=4;%%%%%%size of the bin(into cell memory)
         options.tracklet_length=options.tracklet_length_cell(options.trkcount);%%%%%%% tracklet lenght
         options.numbin=options.numbin_cell(options.bincount);%%%%%%%number of bin
         options.max_magnitude_all=options.max_magnitude_all_cell(options.trkcount);%%%% max magnitude in Train video
@@ -29,11 +30,11 @@ data=Mnu_Tracklet1;
 [ Video_Abnormal,label1 ] = Function_Compute_AbnormalityMeasure(TestVideoFile_new, Feature_Index,data,options,Distance_Matrix );
 
 
-% 
-% Signal=[];
-% for i=1:11
-%    Signal=[Signal, Video_Abnormal{i}']; 
-% end
-% 
-% Signal(2,:)=label1';
-% signal1=Signal';
+
+Signal=[];
+for i=1:11
+   Signal=[Signal, Video_Abnormal{i}']; 
+end
+
+Signal(2,:)=label1';
+signal1=Signal';
