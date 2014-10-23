@@ -35,5 +35,3 @@ for i=1:11%num_files
     end
 end
 end
-
-
