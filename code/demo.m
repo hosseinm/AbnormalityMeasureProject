@@ -35,7 +35,12 @@ data = rm_noisy_trk1(options, data_noisy);
 [trk_magnitude,trk_orientation] = trk2magori(data);
 Tracklets_matrix = Tracklet2matrix(data);
 linear_index = seq2bin(options,trk_magnitude,trk_orientation);
-[measure_all,P,D] = measure_cell(options,Tracklets_matrix,linear_index,Distance_Matrix);
+
+[P,D] = trk2rep(options);
+[measure] = AbnormalityMeasure(P,D,options,Tracklets_matrix,linear_index,Distance_Matrix);
+
+
+% [measure_all,P,D] = measure_cell(options,Tracklets_matrix,linear_index,Distance_Matrix);
 
 
 
